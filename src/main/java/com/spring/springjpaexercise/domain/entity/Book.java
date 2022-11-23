@@ -20,10 +20,14 @@ public class Book {
     private String name;
 
     @ManyToOne
-    @Column(name="author_id")
+    @JoinColumn(name="author_id")
     private Author author;
 
+    @ManyToOne
+    @JoinColumn(name="publisher_id")
+    private Publisher publisher;
+
     public static BookResponse of(Book book){
-        return new BookResponse(book.getId(),book.getName(), book.getAuthor().getName());
+        return new BookResponse(book.getId(),book.getName(), book.getAuthor().getName(), book.getPublisher().getName());
     }
 }
