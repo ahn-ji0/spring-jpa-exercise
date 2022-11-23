@@ -19,10 +19,11 @@ public class Book {
     private Long id;
     private String name;
 
-    @Column(name = "author_id")
-    private Long authorId;
+    @ManyToOne
+    @Column(name="author_id")
+    private Author author;
 
-    public static BookResponse of(Book book, String authorName){
-        return new BookResponse(book.getId(),book.getName(),authorName);
+    public static BookResponse of(Book book){
+        return new BookResponse(book.getId(),book.getName(), book.getAuthor().getName());
     }
 }
