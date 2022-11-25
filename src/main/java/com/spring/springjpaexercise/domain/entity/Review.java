@@ -31,6 +31,7 @@ public class Review {
 
     public static ReviewResponse of(Review review){
         return ReviewResponse.builder()
+                .hospitalName(review.getHospital().getName())
                 .title(review.getTitle())
                 .content(review.getContent())
                 .patientName(review.getPatientName())

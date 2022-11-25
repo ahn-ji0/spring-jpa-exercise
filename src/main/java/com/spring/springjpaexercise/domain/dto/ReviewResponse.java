@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class ReviewResponse {
+    private String hospitalName;
     private String title;
     private String content;
     private String patientName;
