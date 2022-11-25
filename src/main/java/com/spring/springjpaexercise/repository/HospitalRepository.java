@@ -1,4 +1,4 @@
-가package com.spring.springjpaexercise.repository;
+package com.spring.springjpaexercise.repository;
 
 import com.spring.springjpaexercise.domain.entity.Hospital;
 import org.springframework.data.jpa.repository.JpaRepository;
