@@ -1,4 +1,4 @@
-가package com.spring.springjpaexercise.service;
+package com.spring.springjpaexercise.service;
 
 import com.spring.springjpaexercise.domain.dto.ReviewResponse;
 import com.spring.springjpaexercise.domain.entity.Review;
