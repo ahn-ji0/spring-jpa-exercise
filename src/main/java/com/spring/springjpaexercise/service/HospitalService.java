@@ -42,8 +42,8 @@ public class HospitalService {
         return new ReviewCreateResponse(savedReview.getHospital().getName(),savedReview.getTitle(), savedReview.getContent(),savedReview.getPatientName(),"리뷰 등록 성공!");
     }
     public List<ReviewResponse> findReview(Long id){
-        Optional<Hospital> hospital = hospitalRepository.findById(id);
-        List<Review> reviewList = hospital.get().getReviews();
+        Hospital hospital = hospitalRepository.findById(id).orElseThrow(()->new RuntimeException("id에 해당하는 병원이 없습니다"));
+        List<Review> reviewList = hospital.getReviews();
         List<ReviewResponse> reviewResponseList = reviewList.stream().map(review -> Review.of(review)).collect(Collectors.toList());
         return reviewResponseList;
     }
