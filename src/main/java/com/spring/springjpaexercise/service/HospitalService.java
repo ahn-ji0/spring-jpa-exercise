@@ -47,4 +47,9 @@ public class HospitalService {
         List<ReviewResponse> reviewResponseList = reviewList.stream().map(review -> Review.of(review)).collect(Collectors.toList());
         return reviewResponseList;
     }
+    public HospitalResponse findById(Long id){
+        Hospital hospital = hospitalRepository.findById(id).orElseThrow(()->new RuntimeException("id에 해당하는 병원이 없습니다"));
+        HospitalResponse hospitalResponse = Hospital.of(hospital);
+        return hospitalResponse;
+    }
 }
