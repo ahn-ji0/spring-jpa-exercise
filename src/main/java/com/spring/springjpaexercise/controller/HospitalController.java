@@ -41,4 +41,11 @@ public class HospitalController {
         List<ReviewResponse> reviewResponseList = hospitalService.findReview(id);
         return ResponseEntity.ok().body(reviewResponseList);
     }
+
+    @ApiOperation(value = "특정 병원의 모든 정보 보기")
+    @GetMapping("/{id}")
+    public ResponseEntity<HospitalResponse> getHospital(@PathVariable Long id){
+        HospitalResponse hospitalResponse = hospitalService.findById(id);
+        return ResponseEntity.ok().body(hospitalResponse);
+    }
 }
