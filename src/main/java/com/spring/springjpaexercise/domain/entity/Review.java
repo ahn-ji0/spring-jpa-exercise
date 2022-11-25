@@ -1,5 +1,6 @@
 package com.spring.springjpaexercise.domain.entity;
 
+import com.spring.springjpaexercise.domain.dto.ReviewResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,4 +28,12 @@ public class Review {
 
     @Column(name = "patient_name")
     private String patientName;
+
+    public static ReviewResponse of(Review review){
+        return ReviewResponse.builder()
+                .title(review.getTitle())
+                .content(review.getContent())
+                .patientName(review.getPatientName())
+                .build();
+    }
 }
