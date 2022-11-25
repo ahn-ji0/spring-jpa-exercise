@@ -3,6 +3,7 @@ package com.spring.springjpaexercise.service;
 import com.spring.springjpaexercise.domain.dto.HospitalResponse;
 import com.spring.springjpaexercise.domain.dto.ReviewCreateRequest;
 import com.spring.springjpaexercise.domain.dto.ReviewCreateResponse;
+import com.spring.springjpaexercise.domain.dto.ReviewResponse;
 import com.spring.springjpaexercise.domain.entity.Hospital;
 import com.spring.springjpaexercise.domain.entity.Review;
 import com.spring.springjpaexercise.repository.HospitalRepository;
@@ -23,7 +24,7 @@ public class HospitalService {
         this.reviewRepository = reviewRepository;
     }
 
-    public List<HospitalResponse> find() {
+    public List<HospitalResponse> findAll() {
         List<Hospital> hospitals = hospitalRepository.findAll();
         List<HospitalResponse> hospitalResponseList = hospitals.stream().map(hospital -> Hospital.of(hospital)).collect(Collectors.toList());
 
@@ -39,5 +40,11 @@ public class HospitalService {
                 .build();
         Review savedReview = reviewRepository.save(review);
         return new ReviewCreateResponse(savedReview.getHospital().getName(),savedReview.getTitle(), savedReview.getContent(),savedReview.getPatientName(),"리뷰 등록 성공!");
+    }
+    public List<ReviewResponse> findReview(Long id){
+        Optional<Hospital> hospital = hospitalRepository.findById(id);
+        List<Review> reviewList = hospital.get().getReviews();
+        List<ReviewResponse> reviewResponseList = reviewList.stream().map(review -> Review.of(review)).collect(Collectors.toList());
+        return reviewResponseList;
     }
 }
