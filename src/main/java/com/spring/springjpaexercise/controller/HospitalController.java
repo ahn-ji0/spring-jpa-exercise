@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/hospital")
+@RequestMapping("/api/v1/hospital")
 public class HospitalController {
 
     private HospitalService hospitalService;
